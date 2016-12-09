@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body %}
+  <header class="container">
+    <h1 class="text-center text-uppercase">Symfony - real-world practical</h1>
+  </header>
+  <section id="form-contact-me"  class="container">
+    <div class="text-center">
+      <br>
+      <span class="label label-info">Attibute: novalidate has been added to show framework form validation.</span>
+      <br>
+      <br>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="container">
+    <header>
+      <h2 class="text-center text-uppercase">Contact Me Submitions <br><small>Last six submitions</small></h2>
+    </header>
+    <div class="row">
+      {% for contact in contacts %}
+        <div class="col-md-4">
+          <div class="card">
+            <p>
+              <span>{{ contact.id }}</span>
+              <span class="pull-right">{{ contact.createdAt | date }}</span>
+            </p>
+            <h3>{{ contact.username }}</h3>
+            <p>{{ contact.comment }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
+

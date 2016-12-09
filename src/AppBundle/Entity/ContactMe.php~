@@ -1,0 +1,30 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use AppBundle\Model\EntityBase;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ContactMe
+ *
+ * @ORM\Table(name="contact_me")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactMeRepository")
+ */
+class ContactMe extends EntityBase
+{
+
+  /**
+   * @var string
+   * @ORM\Column(name="username", type="string", length=32, nullable=false)
+   */
+  protected $username;
+
+  /**
+   * @var String $comment
+   * @ORM\Column(name="comment", type="text", nullable=false)
+   */
+  protected $comment;
+
+}
+
